@@ -1,0 +1,20 @@
+CREATE TABLE carteirinhas (
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+numero TEXT NOT NULL UNIQUE,
+aluno_id INTEGER UNIQUE NOT NULL,
+FOREIGN KEY (aluno_id) REFERENCES alunos(id)
+);
+
+CREATE TABLE disciplinas (
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+nome TEXT NOT NULL UNIQUE
+);
+
+CREATE TABLE aluno_disciplina (
+aluno_id INTEGER,
+disciplina_id INTEGER,
+PRIMARY KEY (aluno_id, disciplina_id),
+FOREIGN KEY (aluno_id) REFERENCES alunos(id),
+FOREIGN KEY (disciplina_id) REFERENCES disciplinas(id)
+);
+
